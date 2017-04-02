@@ -1,22 +1,18 @@
+
 html {
 	background-color: lightgray;
-}
-	
-html, body {
-	height: 95%;
 }
 	
 h1, p {
 	font-size: 110%;
 	text-align: center;
 }
-	
-h1{
+
+h1 {
 	color: white;
-	font-size: 350%;
-	background-color: blue;
 	margin-bottom: 15px;
 	margin-top: 15px;
+	background-color: blue;
 }
 
 #buttons {    
@@ -27,7 +23,6 @@ h1{
 #content {
 	background-color: white;
 	height: 100%;
-	width: 50%;
 	margin: auto;
 }
 
@@ -42,4 +37,19 @@ h1{
 	
 #author {
 	margin-top: 30px;
+}
+	
+	@media only screen and (min-width: 768px){
+		
+	html, body {
+		height: 95%;
+	}
+		
+	h1{
+		font-size: 350%;
+	}
+
+	#content {
+		width: 50%;
+	}
 }
