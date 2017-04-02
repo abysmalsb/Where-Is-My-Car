@@ -3,9 +3,18 @@
 	html, body {
 		height: 100%;
 	}
+	
+	h1{
+		font-size: 350%;
+	}
 
-	h1 {
+	h1, p {
 		text-align: center;
+	}
+	
+	#buttons {    
+		text-align: center;
+		margin-bottom: 15px;
 	}
 
 	#content {
@@ -26,8 +35,8 @@
 		border-color: darkblue;
 		border-width: 2px;
 	}
-	
-	#footer {
-		text-align: center;
+  
+	#author {
+		font-size: 110%;
 	}
 }
