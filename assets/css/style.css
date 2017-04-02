@@ -1,0 +1,14 @@
+html, body {
+	height: 100%;
+}
+
+#deleteMarkButton {
+	disabled: 'disabled'
+}
+
+#map {
+	width: 100%;
+	height: 80%;
+	background-color: grey;
+}
+
