@@ -20,7 +20,8 @@ function initMap() {
 	
 	if(isThereSavedCar()) {
 		document.getElementById('deleteMarkButton').disabled = false;
-		addMark(defPosition);
+		var pos = getCarPosition();
+		addMarker(new google.maps.LatLng(pos.lat, pos.lng));
 	}
 
 	// Try HTML5 geolocation.
@@ -33,7 +34,7 @@ function initMap() {
 			
 			saveLastPosition(pos)
 			infoWindow.setPosition(pos);
-			infoWindow.setContent('Location found.');
+			infoWindow.setContent('You');
 			map.setCenter(pos);
 			}, function() {
 			handleLocationError(true, infoWindow, map.getCenter());
@@ -54,7 +55,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function addMarker(location) {
 	var marker = new google.maps.Marker({
 		position: location,
+		label: "C",
 		map: map
+
 	});
 	carMarker = marker;
 }
@@ -86,24 +89,22 @@ function saveLastPosition(pos) {
 	}	
 }
 
-function isThereSavedCar(){
+function isThereSavedCar() {
 	if (typeof(Storage) !== "undefined") {
 		return Number(localStorage.getItem('CarLongitude'));
 	} 
 }
 
-function addMark()
-{
+function addCar() {
 	deleteMarker();
 	document.getElementById('deleteMarkButton').disabled = false;
-	saveCarPosition(getLastPosition());
 	var pos = getLastPosition();
-	carPos = new google.maps.LatLng(pos.lat, pos.lng);
+	saveCarPosition(pos);
+	var carPos = new google.maps.LatLng(pos.lat, pos.lng);
 	addMarker(carPos);
 }
 
-function deleteMark()
-{
+function deleteCar() {
 	deleteMarker();
 	localStorage.removeItem('CarLongitude');
 	localStorage.removeItem('CarLatitude');
@@ -124,7 +125,7 @@ function getCarPosition() {
 	var latitude;
 	if (typeof(Storage) !== "undefined") {
 		var longitude = localStorage.getItem('CarLongitude') || longitude;
-		var latitude = localStorage.getItem(CarLatitude) || latitude;
+		var latitude = localStorage.getItem('CarLatitude') || latitude;
 	} else {
 		// Sorry! No Web Storage support..
 	}
